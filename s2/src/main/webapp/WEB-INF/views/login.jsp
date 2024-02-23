@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+    <li>
+        <ul>
+            <div class="id_intro">아이디</div>
+            <div class="pwd_intro">비밀번호</div>
+        </ul>
+    </li>
 </body>
 </html>
