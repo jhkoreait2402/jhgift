@@ -15,7 +15,7 @@ public class MemberController {
 
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String member() {
-		return Common.Board.VIEW_PATH + "login";
+		return Common.Board.VIEW_PATH + "login.jsp";
 	}
 	
 }
