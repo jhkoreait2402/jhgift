@@ -2,18 +2,18 @@ package util;
 
 public class Common {
 
-	// ÀÏ¹Ý°Ô½ÃÆÇ¿ë
+	// ï¿½Ï¹Ý°Ô½ï¿½ï¿½Ç¿ï¿½
 	public static class Board{
-		public final static String VIEW_PATH = "/WEB-INF/views/board/";
-				
-		// ÇÑ ÆäÀÌÁö¿¡ º¸¿©ÁÙ °Ô½Ã¹° ¼ö
+		//public final static String VIEW_PATH = "/WEB-INF/views/board/";
+		public final static String VIEW_PATH = "/WEB-INF/views/";
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½
 		public final static int BLOCKLIST = 10;
 		
-		// ÇÑ¹ø¿¡ º¸¿©Áú ÆäÀÌÁö ¸Þ´º ¼ö
+		// ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½
 		public final static int BLOCKPAGE = 3;
 	}
 	
-	// È¸¿ø¿ë °æ·Î
+	// È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	public static class Member{
 		public final static String VIEW_PATH = "/WEB-INF/views/member/";
 	}
