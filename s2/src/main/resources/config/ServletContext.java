@@ -6,6 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
+
+import com.korea.s2.MemberController;
+
+import service.MemberService;
 
 //import com.korea.board.BoardController;
 //
@@ -14,30 +20,30 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-// Enable·Î ½ÃÀÛÇÏ´Â ¾î³ëÅ×ÀÌ¼ÇÀ» @ConfigurationÀÌ ºÙÀº ¼³Á¤Å¬·¡½º¿¡ ºÙÀÓÀ¸·Î ½á ÀÌ¿Í °ü·ÃµÈ ±â´ÉµéÀ» Æí¸®ÇÏ°Ô Á¦°ø
-// ¾î³ëÅ×ÀÌ¼Ç ±â¹ÝÀÇ SpringMVC¸¦ ±¸¼ºÇÒ ¶§ ÇÊ¿äÇÑ Bean ¼³Á¤µéÀ» ÀÚµ¿À¸·Î ÇØÁÖ´Â ¾î³ëÅ×ÀÌ¼Ç
-//@ComponentScan(basePackages={"com.korea.json","dao"})//¿©·¯°³ÀÇ ÄÄÆ÷³ÍÆ®½ºÄµÇÏ±âÀ§ÇÑ °Í
-// @component, streotype(@service, @repository, @controller)¾î³ëÅ×ÀÌ¼ÇÀÌ ºÎ¿©µÈ ClassµéÀ» 
-// ÀÚµ¿À¸·Î ScanÇÏ¿© BeanÀ¸·Î µî·ÏÇØÁÖ´Â ¿ªÇÒÀ» ÇÏ´Â ¾î³ëÅ×ÀÌ¼Ç
+// Enableï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ @Configurationï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¿ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½Éµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ SpringMVCï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ Bean ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½
+//@ComponentScan(basePackages={"com.korea.json","dao"})//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½Äµï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+// @component, streotype(@service, @repository, @controller)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½Î¿ï¿½ï¿½ï¿½ Classï¿½ï¿½ï¿½ï¿½ 
+// ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ Scanï¿½Ï¿ï¿½ Beanï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½
 public class ServletContext implements WebMvcConfigurer{
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 	
-//	@Bean
-//	public InternalResourceViewResolver resolver() {
-//		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//		resolver.setViewClass(JstlView.class);
-//		resolver.setPrefix("/WEB-INF/views/");
-//		resolver.setSuffix(".jsp");
-//		return resolver;
-//	}
+	@Bean
+	public InternalResourceViewResolver resolver() {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setViewClass(JstlView.class);
+		resolver.setPrefix("/WEB-INF/views/");
+		resolver.setSuffix(".jsp");
+		return resolver;
+	}
 	
 	
 //	@Bean
-//	public BoardController boardController(BoardService boardService) {
-//		return new BoardController(boardService);
+//	public MemberController MemberController(MemberService memberService) {
+//		return new MemberController(memberService);
 //	}
 	
 }
