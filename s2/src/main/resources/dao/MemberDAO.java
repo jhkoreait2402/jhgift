@@ -13,7 +13,7 @@ public class MemberDAO {
 //	}
 	
 	
-	public String login(MemberDTO dto) {
+	public String login(MemberDTO dto) { // ID, PW
 		
 		return sqlSession.selectOne("m.loginCheck",dto);
 	}
