@@ -6,7 +6,7 @@ import dto.MemberDTO;
 
 public class MemberDAO {
 	
-	SqlSession sqlSession;
+	SqlSession sqlSession;//
 //	public MemberDAO(SqlSession sqlSession) {
 //		
 //		this.sqlSession = sqlSession;
