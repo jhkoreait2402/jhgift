@@ -5,9 +5,10 @@ import dto.MemberDTO;
 
 public class MemberService {
 	
-	MemberDTO dto;
+
+	MemberDTO memberDTO;
 
 	public String login(MemberDAO memberDAO) {
-		return memberDAO.login(MemberDTO dto);
+		return memberDAO.login(memberDTO);
 	}
 }
