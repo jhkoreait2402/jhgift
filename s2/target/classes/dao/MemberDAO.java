@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import dto.MemberDTO;
 
-public class MemberDAO {
+public class MemberDAO {//ASDFDAS
 	
 	SqlSession sqlSession;//
 //	public MemberDAO(SqlSession sqlSession) {
