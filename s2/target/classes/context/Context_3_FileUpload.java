@@ -12,7 +12,7 @@ public class Context_3_FileUpload {
 		CommonsMultipartResolver mr = new CommonsMultipartResolver();
 		mr.setDefaultEncoding("utf-8");
 		
-		// ÃÖ´ë ¾÷·Îµå ¿ë·®
+		// ìµœëŒ€ ì—…ë¡œë“œ ìš©ëŸ‰
 		mr.setMaxUploadSize(10485760);
 		return mr;
 	}

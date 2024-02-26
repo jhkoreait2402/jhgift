@@ -6,17 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
 import com.korea.s2.MemberController;
 
-import service.MemberService;
+//import service.MemberService;
 
-//import com.korea.board.BoardController;
-//
-//import dao.BoardDAO;
-//import service.BoardService;
+
 
 @Configuration
 @EnableWebMvc
@@ -41,13 +36,11 @@ public class ServletContext implements WebMvcConfigurer{
 //	}
 	
 	
-//	@Bean
-//	public MemberController MemberController(MemberService memberService) {
-//		return new MemberController(memberService);
-//	}
-	
 	@Bean
-	public MemberController MemberController() {
-		return new MemberController();
+	public MemberController memberController() {
+		return memberController();
 	}
+	
+	
+	
 }
