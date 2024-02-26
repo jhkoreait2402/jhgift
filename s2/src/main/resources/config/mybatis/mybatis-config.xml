@@ -13,6 +13,7 @@
 		<typeAlias type="dto.BoardDTO" alias="board"/>
 		<typeAlias type="dto.MemberDTO" alias="member"/> 
 	-->
+		<typeAlias type="dto.MemberDTO" alias="member"/>
 
 	</typeAliases>
 	
@@ -21,5 +22,6 @@
 		<mapper resource="config/mybatis/mapper/board.xml" />
 		<mapper resource="config/mybatis/mapper/member.xml" />
  -->
+ 		<mapper resource="config/mybatis/mapper/member.xml"/>
 	</mappers>
 </configuration>

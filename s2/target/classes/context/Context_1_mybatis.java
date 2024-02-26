@@ -18,37 +18,37 @@ public class Context_1_mybatis {
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("oracle.jdbc.OracleDriver");
 		ds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-		ds.setUsername("test_pm");
-		ds.setPassword("1111");
+		ds.setUsername("gift");
+		ds.setPassword("gift");
 		return ds;
 	}
 	
-	// SqlSessionFactoryBeanÀº ½ºÇÁ¸µÀÇ FactoryBean ÀÎÅÍÆäÀÌ½º¸¦ ±¸ÇöÇÑ´Ù
-	// ÀÌ¼³Á¤Àº ½ºÇÁ¸µÀÌ SqlSessionFactoryBean ÀÚÃ¼¸¦ »ı¼ºÇÏ´Â °ÍÀÌ ¾Æ´Ï¶ó
-	// Factory¿¡¼­ getObject()¸Ş¼­µå¸¦ È£ÃâÇÑ °á°ú¸¦ ¸®ÅÏÇÑ´Ù.
-	// ÀÌ °æ¿ì ½ºÇÁ¸µÀº ¾îÇÃ¸®ÄÉÀÌ¼Ç ½ÃÀÛ ½ÃÁ¡¿¡¼­ SqlSessionFactory¸¦ ºôµåÇÏ°í
-	// sqlSessionFactory¶ó´Â ÀÌ¸§À¸·Î ÀúÀåÇÑ´Ù.
+	// SqlSessionFactoryBeanì€ ìŠ¤í”„ë§ì˜ FactoryBean ì¸í„°í˜ì´ìŠ¤ë¥¼ êµ¬í˜„í•œë‹¤
+	// ì´ì„¤ì •ì€ ìŠ¤í”„ë§ì´ SqlSessionFactoryBean ìì²´ë¥¼ ìƒì„±í•˜ëŠ” ê²ƒì´ ì•„ë‹ˆë¼
+	// Factoryì—ì„œ getObject()ë©”ì„œë“œë¥¼ í˜¸ì¶œí•œ ê²°ê³¼ë¥¼ ë¦¬í„´í•œë‹¤.
+	// ì´ ê²½ìš° ìŠ¤í”„ë§ì€ ì–´í”Œë¦¬ì¼€ì´ì…˜ ì‹œì‘ ì‹œì ì—ì„œ SqlSessionFactoryë¥¼ ë¹Œë“œí•˜ê³ 
+	// sqlSessionFactoryë¼ëŠ” ì´ë¦„ìœ¼ë¡œ ì €ì¥í•œë‹¤.
 	
 	@Bean
 	public SqlSessionFactory factioryBean(DataSource ds) throws Exception{
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(ds);
 		
-		// Ãß°¡ÀûÀÎ Mybatis ¼³Á¤
+		// ì¶”ê°€ì ì¸ Mybatis ì„¤ì •
 		factoryBean.setConfigLocation(new ClassPathResource("config/mybatis/mybatis-config.xml"));
 		return factoryBean.getObject();
 	}
 	
 	
-	// Mybatis¿¡¼­´Â SqlSessionÀ» »ı¼ºÇÏ±â À§ÇØ SqlSessionFactory¸¦ »ç¿ëÇÑ´Ù.
-	// SessionÀ» ÇÑ¹ø ´õ »ı¼ºÇÏ¸é ¸ÅÇÎ±¸¹®À» ½ÇÇàÇÏ°Å³ª commit ¶Ç´Â rollbackÀ» »ç¿ëÇÏ±â À§ÇØ sessionÀ» »ç¿ëÇÒ ¼ö ÀÖ´Ù.
-	// ¸¶Áö¸·À¸·Î ´õ ÀÌ»ó ÇÊ¿äÇÏÁö ¾ÊÀº  »óÅÂ°¡ µÇ¸é SessionÀ» ´İ´Â´Ù.
-	// Mybatis Spring ¿¬µ¿¸ğµâÀ» »ç¿ëÇÏ¸é SqlSessionFactory¸¦ Á÷Á¢ »ç¿ëÇÒ ÇÊ¿ä°¡ ¾ø´Ù.
-	// ¿Ö³ªÇÏ¸é, ½ºÇÁ¸µ Æ®·£Àè¼Ç ¼³Á¤¿¡ µû¶ó ÀÚµ¿À¸·Î Ä¿¹Ô ¶Ç´Â ·Ñ¹éÀ» ¼öÇàÇÏ±â ¶§¹®ÀÌ´Ù.
+	// Mybatisì—ì„œëŠ” SqlSessionì„ ìƒì„±í•˜ê¸° ìœ„í•´ SqlSessionFactoryë¥¼ ì‚¬ìš©í•œë‹¤.
+	// Sessionì„ í•œë²ˆ ë” ìƒì„±í•˜ë©´ ë§¤í•‘êµ¬ë¬¸ì„ ì‹¤í–‰í•˜ê±°ë‚˜ commit ë˜ëŠ” rollbackì„ ì‚¬ìš©í•˜ê¸° ìœ„í•´ sessionì„ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
+	// ë§ˆì§€ë§‰ìœ¼ë¡œ ë” ì´ìƒ í•„ìš”í•˜ì§€ ì•Šì€  ìƒíƒœê°€ ë˜ë©´ Sessionì„ ë‹«ëŠ”ë‹¤.
+	// Mybatis Spring ì—°ë™ëª¨ë“ˆì„ ì‚¬ìš©í•˜ë©´ SqlSessionFactoryë¥¼ ì§ì ‘ ì‚¬ìš©í•  í•„ìš”ê°€ ì—†ë‹¤.
+	// ì™œë‚˜í•˜ë©´, ìŠ¤í”„ë§ íŠ¸ëœì­ì…˜ ì„¤ì •ì— ë”°ë¼ ìë™ìœ¼ë¡œ ì»¤ë°‹ ë˜ëŠ” ë¡¤ë°±ì„ ìˆ˜í–‰í•˜ê¸° ë•Œë¬¸ì´ë‹¤.
 	
-	// SqlSessionTemplateÅ¬·¡½º´Â SqlSessionÀ» implementsÇÏ°í ÄÚµå¿¡¼­ SqlSessionÀ» ´ëÃ¼ÇÏ´Â ¿ªÇÒÀ» ÇÑ´Ù.
-	// SQLÀ» Ã³¸®ÇÏ´Â Mybatis Method¸¦ È£ÃâÇÒ ¶§ SqlSessionÀÌ ÇöÀçÀÇ Spring tracsaction¿¡¼­ »ç¿ëµÉ ¼ö ÀÖµµ·Ï º¸ÀåÇØÁØ´Ù.
-	// SqlSessionTemplateÀº ÇÊ¿äÇÑ ½ÃÁ¡¿¡¼­ SessionÀ» ´İ°í, CommitÇÏ°Å³ª RollbackÇÏ´Â °ÍÀ» Æ÷ÇÔÇÑ SessionÀÇ ¶óÀÌÇÁ»çÀÌÅ¬À» °ü¸®ÇÑ´Ù.
+	// SqlSessionTemplateí´ë˜ìŠ¤ëŠ” SqlSessionì„ implementsí•˜ê³  ì½”ë“œì—ì„œ SqlSessionì„ ëŒ€ì²´í•˜ëŠ” ì—­í• ì„ í•œë‹¤.
+	// SQLì„ ì²˜ë¦¬í•˜ëŠ” Mybatis Methodë¥¼ í˜¸ì¶œí•  ë•Œ SqlSessionì´ í˜„ì¬ì˜ Spring tracsactionì—ì„œ ì‚¬ìš©ë  ìˆ˜ ìˆë„ë¡ ë³´ì¥í•´ì¤€ë‹¤.
+	// SqlSessionTemplateì€ í•„ìš”í•œ ì‹œì ì—ì„œ Sessionì„ ë‹«ê³ , Commití•˜ê±°ë‚˜ Rollbackí•˜ëŠ” ê²ƒì„ í¬í•¨í•œ Sessionì˜ ë¼ì´í”„ì‚¬ì´í´ì„ ê´€ë¦¬í•œë‹¤.
 	
 	
 	@Bean
